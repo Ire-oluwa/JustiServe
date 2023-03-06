@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:justiserve/route/app.screens.dart';
 import 'package:justiserve/route/route.name.dart';
 
@@ -21,7 +22,10 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Justi Serve',
-          theme: ThemeData(useMaterial3: true),
+          theme: ThemeData(
+            useMaterial3: true,
+            fontFamily: GoogleFonts.lato().fontFamily,
+          ),
           initialRoute: RouteName.splash,
           getPages: AppScreen.screens,
         );
