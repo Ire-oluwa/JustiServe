@@ -31,7 +31,7 @@ class Splash extends GetView<SplashController> {
                 left: 95.5.w,
                 child: CustomText(
                   text: "JustiServe",
-                  colour: Colors.black,
+                  colour: AppColours.primaryWhite,
                   weight: FontWeight.w700,
                   size: 40.sp,
                 ),
@@ -39,20 +39,13 @@ class Splash extends GetView<SplashController> {
               Positioned(
                 bottom: 40.h,
                 left: 16.w,
-                child:
-                    // SmoothPageIndicator(
-                    //   controller: pageController,
-                    //   count: 3,
-                    //   effect: ExpandingDotsEffect(
-                    //     activeDotColor: Colors.black,
-                    //     dotColor: Colors.blueGrey,
-                    //   ),
-                    // ),
-                    Obx(
+                child: Obx(
                   () => AnimatedSmoothIndicator(
                     activeIndex: splashController.currentIntegerIndex.value,
                     count: 3,
                     effect: ExpandingDotsEffect(
+                      dotColor: AppColours.primaryWhite,
+                      activeDotColor: AppColours.primaryWhite,
                       expansionFactor: 2,
                       radius: 5.r,
                       dotWidth: 8.w,
@@ -66,7 +59,7 @@ class Splash extends GetView<SplashController> {
                 right: 16.w,
                 child: GestureDetector(
                   onTap: () {
-                    Get.toNamed(RouteName.signup);
+                    Get.toNamed(RouteName.landingPage);
                   },
                   child: Obx(
                     () => CustomText(
@@ -101,7 +94,7 @@ class Splash extends GetView<SplashController> {
               child: CustomText(
                 text:
                     "Break free from oppression, let Justiserve give\nyour voice legal representation.",
-                colour: Colors.black,
+                colour: AppColours.primaryWhite,
                 weight: FontWeight.w700,
                 size: 16.sp,
               ),
@@ -118,7 +111,7 @@ class Splash extends GetView<SplashController> {
               left: 40.w,
               child: CustomText(
                 text: "Providing access to justice for Nigerians",
-                colour: Colors.black,
+                colour: AppColours.primaryWhite,
                 weight: FontWeight.w700,
                 size: 16.sp,
               ),
@@ -134,26 +127,11 @@ class Splash extends GetView<SplashController> {
               child: CustomText(
                 text:
                     "Your voice is your power. Let JusticeServe amplify\nyour call for freedom and Justice",
-                colour: Colors.black,
+                colour: AppColours.primaryWhite,
                 weight: FontWeight.w700,
                 size: 16.sp,
               ),
             ),
-            // Positioned(
-            //   bottom: 40.h,
-            //   right: 16.w,
-            //   child: GestureDetector(
-            //     // if current index is < 2, go to  sign_in screen else next page
-            //     child: CustomText(
-            //       // if current index is equal to 2, change "skip" to "continue"
-            //       text: "Continue",
-            //       colour: AppColours.primaryCream,
-            //       weight: FontWeight.w400,
-            //       size: 24.sp,
-            //       style: FontStyle.italic,
-            //     ),
-            //   ),
-            // ),
           ],
         ),
       ],
