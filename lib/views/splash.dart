@@ -1,64 +1,68 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:justiserve/constants.dart';
+import 'package:justiserve/controllers/splash.controller.dart';
 import 'package:justiserve/models/custom.text.dart';
 import 'package:justiserve/models/svg_image.dart';
+import 'package:justiserve/route/route.name.dart';
 
-class Splash extends StatelessWidget {
-  const Splash({Key? key}) : super(key: key);
+class Splash extends GetView<SplashController> {
+  Splash({Key? key}) : super(key: key);
+
+  SplashController splashController = Get.put(SplashController());
+  PageController pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
-    // final controller = SplashController();
     return Scaffold(
       body: SafeArea(
-        child: Stack(
-          children: [
-            _buildCarousel(),
-            Positioned(
-              top: 379.h,
-              left: 95.5.w,
-              child: CustomText(
-                text: "JustiServe",
-                colour: Colors.black,
-                weight: FontWeight.w700,
-                size: 40.sp,
-              ),
-            ),
-            Positioned(
-              bottom: 40.h,
-              left: 16.w,
-              child: DotsIndicator(
-                dotsCount: 3,
-                // double
-                // position: ,
-                decorator: DotsDecorator(
-                  // color: AppColours.primaryWhite,
-                  // activeColor: AppColours.primaryWhite,
-                  activeShape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(3.r)),
-                  activeSize: Size(20.w, 8.h),
-                ),
-              ),
-            ),
-            Positioned(
-              bottom: 40.h,
-              right: 16.w,
-              child: GestureDetector(
-                // if current index is < 2, go to  sign_in screen else next page
+        child: PageView.builder(
+          controller: pageController,
+          scrollDirection: Axis.horizontal,
+          itemCount: 3,
+          itemBuilder: (context, index) => Stack(
+            children: [
+              _buildCarousel(),
+              Positioned(
+                top: 379.h,
+                left: 95.5.w,
                 child: CustomText(
-                  // if current index is equal to 2, change "skip" to "continue"
-                  text: "Skip",
-                  colour: AppColours.primaryCream,
-                  weight: FontWeight.w400,
-                  size: 24.sp,
-                  style: FontStyle.italic,
+                  text: "JustiServe",
+                  colour: Colors.black,
+                  weight: FontWeight.w700,
+                  size: 40.sp,
                 ),
               ),
-            ),
-          ],
+              Positioned(
+                bottom: 40.h,
+                left: 16.w,
+                child: Text(""),
+              ),
+              Positioned(
+                bottom: 40.h,
+                right: 16.w,
+                child: GestureDetector(
+                  onTap: () {
+                    Get.toNamed(RouteName.signup);
+                  },
+                  child: Obx(
+                    () => CustomText(
+                      // if current index is equal to 2, change "skip" to "continue"
+                      text: splashController.currentIntegerIndex.value == 2
+                          ? "Continue"
+                          : "Skip",
+                      colour: AppColours.primaryCream,
+                      weight: FontWeight.w400,
+                      size: 24.sp,
+                      style: FontStyle.italic,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -114,6 +118,21 @@ class Splash extends StatelessWidget {
                 size: 16.sp,
               ),
             ),
+            // Positioned(
+            //   bottom: 40.h,
+            //   right: 16.w,
+            //   child: GestureDetector(
+            //     // if current index is < 2, go to  sign_in screen else next page
+            //     child: CustomText(
+            //       // if current index is equal to 2, change "skip" to "continue"
+            //       text: "Continue",
+            //       colour: AppColours.primaryCream,
+            //       weight: FontWeight.w400,
+            //       size: 24.sp,
+            //       style: FontStyle.italic,
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ],
@@ -122,7 +141,13 @@ class Splash extends StatelessWidget {
         aspectRatio: 375.w / 667.h,
         enableInfiniteScroll: false,
         viewportFraction: 1,
-        onPageChanged: (index, reason) {},
+        onPageChanged: (index, reason) {
+          splashController.swipePage(index, reason);
+          print(splashController.currentIntegerIndex.value);
+          if (splashController.currentIntegerIndex.value == 2) {
+            print("Yay!");
+          }
+        },
       ),
     );
   }

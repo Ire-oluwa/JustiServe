@@ -1,9 +1,10 @@
+import 'package:carousel_slider/carousel_options.dart';
 import 'package:get/get.dart';
 
 class SplashController extends GetxController {
-  RxDouble currentDoubleIndex = 0.0.obs;
   RxInt currentIntegerIndex = 0.obs;
-  swipePage(index, reason) {
+  void swipePage(int index, CarouselPageChangedReason reason) {
     currentIntegerIndex.value = index;
+    update();
   }
 }
