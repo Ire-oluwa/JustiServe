@@ -7,6 +7,7 @@ import 'package:justiserve/controllers/splash.controller.dart';
 import 'package:justiserve/models/custom.text.dart';
 import 'package:justiserve/models/svg_image.dart';
 import 'package:justiserve/route/route.name.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Splash extends GetView<SplashController> {
   Splash({Key? key}) : super(key: key);
@@ -38,10 +39,30 @@ class Splash extends GetView<SplashController> {
               Positioned(
                 bottom: 40.h,
                 left: 16.w,
-                child: Text(""),
+                child:
+                    // SmoothPageIndicator(
+                    //   controller: pageController,
+                    //   count: 3,
+                    //   effect: ExpandingDotsEffect(
+                    //     activeDotColor: Colors.black,
+                    //     dotColor: Colors.blueGrey,
+                    //   ),
+                    // ),
+                    Obx(
+                  () => AnimatedSmoothIndicator(
+                    activeIndex: splashController.currentIntegerIndex.value,
+                    count: 3,
+                    effect: ExpandingDotsEffect(
+                      expansionFactor: 2,
+                      radius: 5.r,
+                      dotWidth: 8.w,
+                      dotHeight: 4.h,
+                    ),
+                  ),
+                ),
               ),
               Positioned(
-                bottom: 40.h,
+                bottom: 34.h,
                 right: 16.w,
                 child: GestureDetector(
                   onTap: () {
@@ -143,10 +164,6 @@ class Splash extends GetView<SplashController> {
         viewportFraction: 1,
         onPageChanged: (index, reason) {
           splashController.swipePage(index, reason);
-          print(splashController.currentIntegerIndex.value);
-          if (splashController.currentIntegerIndex.value == 2) {
-            print("Yay!");
-          }
         },
       ),
     );
