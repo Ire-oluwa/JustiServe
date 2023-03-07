@@ -11,6 +11,6 @@ class AppScreen {
     GetPage(name: RouteName.splash, page: () => Splash()),
     GetPage(name: RouteName.signup, page: () => const SignUp()),
     GetPage(name: RouteName.landingPage, page: () => const LandingPage()),
-    GetPage(name: RouteName.login, page: () => const Login()),
+    GetPage(name: RouteName.login, page: () => Login()),
   ];
 }
