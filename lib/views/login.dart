@@ -37,25 +37,53 @@ class Login extends GetView<LoginController> {
                   ),
                   SizedBox(height: 57.h),
                   Obx(
-                    () => CustomDropdownButton(
-                      items: role
-                          .map(
-                            (e) => DropdownMenuItem<String>(
-                              value: e.toString(),
-                              child: CustomText(
-                                text: e,
-                                size: 16.sp,
-                                weight: FontWeight.w400,
-                                colour: AppColours.primaryWhite,
+                    () => Column(
+                      children: loginController.selectedItem.value == "Client"
+                          ? [
+                              CustomDropdownButton(
+                                items: role
+                                    .map(
+                                      (e) => DropdownMenuItem<String>(
+                                        value: e.toString(),
+                                        child: CustomText(
+                                          text: e,
+                                          size: 16.sp,
+                                          weight: FontWeight.w400,
+                                          colour: AppColours.primaryWhite,
+                                        ),
+                                      ),
+                                    )
+                                    .toList(),
+                                onSelected: (newItem) {
+                                  loginController.selectItem(newItem);
+                                },
+                                value: loginController.selectedItem.value,
+                                // value: loginController.selectedItem.value,
                               ),
-                            ),
-                          )
-                          .toList(),
-                      onSelected: (newItem) {
-                        loginController.selectItem(newItem);
-                      },
-                      value: loginController.selectedItem.value,
-                      // value: loginController.selectedItem.value,
+                              TextField(),
+                            ]
+                          : [
+                              CustomDropdownButton(
+                                items: role
+                                    .map(
+                                      (e) => DropdownMenuItem<String>(
+                                        value: e.toString(),
+                                        child: CustomText(
+                                          text: e,
+                                          size: 16.sp,
+                                          weight: FontWeight.w400,
+                                          colour: AppColours.primaryWhite,
+                                        ),
+                                      ),
+                                    )
+                                    .toList(),
+                                onSelected: (newItem) {
+                                  loginController.selectItem(newItem);
+                                },
+                                value: loginController.selectedItem.value,
+                                // value: loginController.selectedItem.value,
+                              ),
+                            ],
                     ),
                   ),
                 ],
