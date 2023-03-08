@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:justiserve/constants.dart';
-import 'package:justiserve/models/custom.text.dart';
-import 'package:justiserve/models/custom_button.dart';
+import 'package:justiserve/models/widgets/custom.text.dart';
+import 'package:justiserve/models/widgets/custom_button.dart';
 import 'package:justiserve/route/route.name.dart';
 
 class LandingPage extends GetView {

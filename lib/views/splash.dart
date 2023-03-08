@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:justiserve/constants.dart';
 import 'package:justiserve/controllers/splash.controller.dart';
-import 'package:justiserve/models/custom.text.dart';
-import 'package:justiserve/models/svg_image.dart';
+import 'package:justiserve/models/widgets/custom.text.dart';
+import 'package:justiserve/models/widgets/svg_image.dart';
 import 'package:justiserve/route/route.name.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 

@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
           title: 'Justi Serve',
           theme: ThemeData(
             useMaterial3: true,
-            scaffoldBackgroundColor: AppColours.primaryGrey,
+            scaffoldBackgroundColor: AppColours.screenBackgroundColour,
             fontFamily: GoogleFonts.lato().fontFamily,
           ),
           initialRoute: RouteName.splash,
