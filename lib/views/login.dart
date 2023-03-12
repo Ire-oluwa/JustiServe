@@ -16,7 +16,7 @@ class Login extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
-    const List role = ["Client", "Advocate"];
+    const List roles = ["Client", "Advocate"];
     return Scaffold(
       body: kUnfocus(
         child: SafeArea(
@@ -45,7 +45,7 @@ class Login extends GetView<LoginController> {
                         children: loginController.selectedItem.value == "Client"
                             ? [
                                 CustomDropdownButton(
-                                  items: role
+                                  items: roles
                                       .map(
                                         (e) => DropdownMenuItem<String>(
                                           value: e.toString(),
@@ -140,7 +140,7 @@ class Login extends GetView<LoginController> {
                               ]
                             : [
                                 CustomDropdownButton(
-                                  items: role
+                                  items: roles
                                       .map(
                                         (e) => DropdownMenuItem<String>(
                                           value: e.toString(),

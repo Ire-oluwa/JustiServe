@@ -9,7 +9,7 @@ import 'package:justiserve/views/splash.dart';
 class AppScreen {
   static final screens = [
     GetPage(name: RouteName.splash, page: () => Splash()),
-    GetPage(name: RouteName.signup, page: () => const SignUp()),
+    GetPage(name: RouteName.signup, page: () => SignUp()),
     GetPage(name: RouteName.landingPage, page: () => const LandingPage()),
     GetPage(name: RouteName.login, page: () => Login()),
   ];
