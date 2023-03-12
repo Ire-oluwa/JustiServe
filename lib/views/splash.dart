@@ -56,7 +56,7 @@ class Splash extends GetView<SplashController> {
               ),
               Positioned(
                 bottom: 34.h,
-                right: 16.w,
+                right: 20.w,
                 child: GestureDetector(
                   onTap: () {
                     Get.toNamed(RouteName.landingPage);
@@ -69,7 +69,7 @@ class Splash extends GetView<SplashController> {
                           : "Skip",
                       colour: AppColours.primaryCream,
                       weight: FontWeight.w400,
-                      size: 24.sp,
+                      size: 20.sp,
                       style: FontStyle.italic,
                     ),
                   ),
